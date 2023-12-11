@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using InfnetMVC.Data;
 using InfnetMVC.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace InfnetMVC.Controllers
 {
+    [Authorize]
     public class AlunosController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -20,12 +22,26 @@ namespace InfnetMVC.Controllers
             _context = context;
         }
 
-        // GET: Alunos
-        public async Task<IActionResult> Index()
+        //// GET: Alunos
+        //public async Task<IActionResult> Index()
+        //{
+        //      return _context.Aluno != null ? 
+        //                  View(await _context.Aluno.ToListAsync()) :
+        //                  Problem("Entity set 'ApplicationDbContext.Aluno'  is null.");
+        //}
+
+        public IActionResult Index(string BuscaNome)
         {
-              return _context.Aluno != null ? 
-                          View(await _context.Aluno.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Aluno'  is null.");
+            List<Aluno> alunos;
+            if(string.IsNullOrEmpty(BuscaNome))
+            {
+                alunos = _context.Aluno.ToList();
+            }
+            else
+            {
+                alunos = _context.Aluno.Where(p => p.Nome.Contains(BuscaNome)).ToList();
+            }
+            return View(alunos);
         }
 
         // GET: Alunos/Details/5
@@ -46,10 +62,8 @@ namespace InfnetMVC.Controllers
             return View(aluno);
         }
 
-
-
         // GET: Alunos/Create
-        [Authorize(Roles = "coordenador")]
+        [Authorize(Roles = "Coordenador")]
         public IActionResult Create()
         {
             return View();
@@ -60,7 +74,7 @@ namespace InfnetMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nome,Endereco,Telefone,Email,DataDeNascimento")] Aluno aluno)
+        public async Task<IActionResult> Create([Bind("Id,Nome,Endereco,Telefone,Email,DataNascimento")] Aluno aluno)
         {
             if (ModelState.IsValid)
             {
@@ -71,10 +85,8 @@ namespace InfnetMVC.Controllers
             return View(aluno);
         }
 
-
-
         // GET: Alunos/Edit/5
-        [Authorize(Roles = "coordenador")]
+        [Authorize(Roles = "Coordenador")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Aluno == null)
@@ -95,7 +107,7 @@ namespace InfnetMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Endereco,Telefone,Email,DataDeNascimento")] Aluno aluno)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nome,Endereco,Telefone,Email,DataNascimento")] Aluno aluno)
         {
             if (id != aluno.Id)
             {
@@ -125,10 +137,8 @@ namespace InfnetMVC.Controllers
             return View(aluno);
         }
 
-      
-
         // GET: Alunos/Delete/5
-        [Authorize(Roles = "coordenador")]
+        [Authorize(Roles = "Coordenador")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Aluno == null)

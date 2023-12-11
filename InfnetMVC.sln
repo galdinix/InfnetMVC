@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfnetMVC", "InfnetMVC.csproj", "{6350F31C-87B3-440E-B4D2-2AAC950646A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfnetMVC", "InfnetMVC.csproj", "{355729D3-A581-45AA-87BF-16DF4CE44C4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6350F31C-87B3-440E-B4D2-2AAC950646A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6350F31C-87B3-440E-B4D2-2AAC950646A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6350F31C-87B3-440E-B4D2-2AAC950646A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6350F31C-87B3-440E-B4D2-2AAC950646A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355729D3-A581-45AA-87BF-16DF4CE44C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355729D3-A581-45AA-87BF-16DF4CE44C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355729D3-A581-45AA-87BF-16DF4CE44C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355729D3-A581-45AA-87BF-16DF4CE44C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {62039AE1-DC1E-40A0-B047-1FD83DC6A886}
+		SolutionGuid = {7A0B21F5-4BDA-4609-9551-F33129BF78D4}
 	EndGlobalSection
 EndGlobal
